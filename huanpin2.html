@@ -44,8 +44,11 @@
 			var w = lis[0].offsetWidth;
 			//得到li的宽度
 //			console.log(w)
-			box.addEventListener('touchstart',function(ev){
+			document.addEventListener("touchstart",function(ev){
 				ev.preventDefault();
+			}
+			box.addEventListener('touchstart',function(ev){
+				
 				var pos_init = ev.changedTouches[0].clientX;
 				//得到触摸点所在的位置的宽度
 //				console.log(pos_init)
@@ -60,7 +63,7 @@
 				})
 			})
 			box.addEventListener('touchend',function(ev){
-				ev.preventDefault();
+				
 				var n = Math.round(box.offsetLeft/w);
 				//得到移动到的第几个li，取整
 				console.log(n)

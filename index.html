@@ -18,9 +18,11 @@
 		<script>
 			var box = document.getElementById('box');
 			box.addEventListener('touchstart',function(ev){
+				ev.preventDefault();
 				this.innerHTML = ev.changedTouches.length;
 			})
 			box.addEventListener('touchmove',function(ev){
+				ev.preventDefault();
 				this.innerHTML = ev.changedTouches.length;
 			})
 //			box.addEventListener('touchend',function(ev){

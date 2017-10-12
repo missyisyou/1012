@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<title></title>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box" class="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			box.addEventListener('touchstart',function(ev){
+				this.innerHTML = ev.changedTouches.length;
+			})
+			box.addEventListener('touchmove',function(ev){
+				this.innerHTML = ev.changedTouches.length;
+			})
+			box.addEventListener('touchend',function(ev){
+				this.innerHTML = ev.changedTouches.length;
+			})
+		</script>
+	</body>
+</html>

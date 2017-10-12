@@ -26,7 +26,8 @@
 		<div class="box" id="box"></div>
 		<script>
 			var box = document.getElementById('box');
-			var hin = new Hammer(box);
+			var bb = document.documentElement;
+			var hin = new Hammer(bb);
 			hin.get('pinch').set({enable:true});
 			var sc =1;
 			hin.on('pinchin',function(){

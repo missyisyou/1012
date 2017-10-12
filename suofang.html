@@ -30,19 +30,29 @@
 			var hin = new Hammer(bb);
 			hin.get('pinch').set({enable:true});
 			var sc =1;
+			var flag = true;
 			hin.on('pinchin',function(){
-				sc-=0.01;
-				if(sc<=0.1){
-					sc=0.1
-				}
-				box.style.webkitTransform="scale("+sc+")"
+				if(flag){
+					sc-=0.01;
+					if(sc<=0.1){
+						sc=0.1
+					}
+					flag = false;
+					box.style.webkitTransform="scale("+sc+")"
+				}	
+			})
+			hin.addEventListener('touchend',function(){
+				flag = true;
 			})
 			hin.on('pinchout',function(){
-				sc+=0.01;
-				if(sc>=3){
-					sc=3
-				}
-				box.style.webkitTransform="scale("+sc+")"
+				if(flag){
+					sc+=0.01;
+					if(sc>=3){
+						sc=3
+					}
+					flag = false;
+					box.style.webkitTransform="scale("+sc+")"
+				}	
 			})
 		</script>
 	</body>

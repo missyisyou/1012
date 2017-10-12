@@ -63,8 +63,8 @@
 				console.log(n)
 				if(n > 0){
 					n = 0;
-				}else if(n <= -lis.length){
-					n = 1-lis.length
+				}else if(-n >= lis.length){
+					n = -（lis.length-1)
 				}
 				box.style.left = n*w+"px";
 			})

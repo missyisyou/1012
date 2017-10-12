@@ -31,14 +31,14 @@
 			hin.get('pinch').set({enable:true});
 			var sc =1;
 			hin.on('pinchin',function(){
-				sc-=0.05;
+				sc-=0.01;
 				if(sc<=0.1){
 					sc=0.1
 				}
 				box.style.webkitTransform="scale("+sc+")"
 			})
 			hin.on('pinchout',function(){
-				sc+=0.05;
+				sc+=0.01;
 				if(sc>=3){
 					sc=3
 				}

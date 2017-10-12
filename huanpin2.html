@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: relative;
+			}
+			.box{
+				position: absolute;
+				left: 0%;
+				display: flex;
+				width: 100%;
+				height: 100%;
+				list-style: none;
+			}
+			.box li{
+				flex-shrink: 0;
+				float: left;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="box" id="box">
+			<li style="background: yellow;">abc1</li>
+			<li style="background: blue;">abc2</li>
+			<li style="background: red;">abc3</li>
+			<li style="background: fuchsia;">abc4</li>
+		</ul>
+		<script>
+			var box = document.getElementById('box');
+			var lis = document.getElementsByTagName("li");
+			var w = lis[0].offsetWidth;
+			//得到li的宽度
+//			console.log(w)
+			box.addEventListener('touchstart',function(ev){
+				var pos_init = ev.changedTouches[0].clientX;
+				//得到触摸点所在的位置的宽度
+//				console.log(pos_init)
+				var left = box.offsetLeft;
+				//得到触摸点时li所在的位置的宽度
+//				console.log(left)
+				box.addEventListener('touchmove',function(ev){
+					var dis = ev.changedTouches[0].clientX-pos_init;
+//					console.log(dis)
+					box.style.left=left+dis+"px";
+				})
+			})
+			box.addEventListener('touchend',function(ev){
+				var n = Math.round(box.offsetLeft/w);
+				//得到移动到的第几个li，取整
+				console.log(n)
+				if(n > 0){
+					n = 0;
+				}else if(n <= -lis.length){
+					n = 1-lis.length
+				}
+				box.style.left = n*w+"px";
+			})
+		</script>
+	</body>
+</html>

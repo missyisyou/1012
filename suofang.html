@@ -28,7 +28,8 @@
 			var hin = new Hammer(box);
 			hin.get('pinch').set({enable:true});
 			var sc =1;
-			hin.on('pinchin',function(){
+			hin.on('pinchin',function(e){
+				e.preventDefault();
 				sc-=0.05;
 				if(sc<=0.1){
 					sc=0.1
@@ -36,6 +37,7 @@
 				box.style.webkitTransform="scale("+sc+")"
 			})
 			hin.on('pinchout',function(){
+				e.preventDefault();
 				sc+=0.05;
 				if(sc>=3){
 					sc=3
